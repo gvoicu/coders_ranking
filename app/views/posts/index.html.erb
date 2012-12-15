@@ -11,10 +11,18 @@
 
 <ul>
     <% @posts.each do |post| %>
-        <li>
-        <p><%= post.user_id %></p>
+        <p><%= post.user.username %></p>
         <p><%= post.title %></p>
         <p><%= post.text %></p>
-        </li>
+
+        <% post.comments.each do |comment| %>
+            <%= comment.text %>
+        <% end %>
+
+        <%= form_tag ({:controller => "comments", :action => "create"}), ({:method => :post}) do %>
+            <%= text_field_tag "comment[text]" %>
+            <%= hidden_field_tag "comment[post_id]", post.id %>
+            <%= submit_tag "Comment" %>
+        <% end %>
     <% end %>
 </ul>

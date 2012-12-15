@@ -2,12 +2,13 @@ CodersRanking::Application.routes.draw do
   devise_for :users
 
   get "pages/index"
-	
+
 	match '/auth/:provider/callback' => 'users#github'
 	match '/github' => 'users#github'
 
 
   resources :posts
+  resources :comments
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

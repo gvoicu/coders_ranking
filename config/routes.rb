@@ -2,6 +2,9 @@ CodersRanking::Application.routes.draw do
   devise_for :users
 
   get "pages/index"
+	
+	match '/auth/:provider/callback' => 'users#github'
+	match '/github' => 'users#github'
 
   resources :posts
 

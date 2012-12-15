@@ -1,7 +1,8 @@
 CodersRanking::Application.routes.draw do
   get "pages/index"
+	
+	match '/auth/:provider/callback' => 'users#github'
 
-  get "pages/index2"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

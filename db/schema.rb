@@ -11,13 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121215124801) do
+ActiveRecord::Schema.define(:version => 20121215143607) do
 
   create_table "github_data", :force => true do |t|
     t.integer  "user_id"
     t.string   "github_username"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "repos", :force => true do |t|
+    t.string   "repos"
+    t.string   "tag"
+    t.integer  "stars"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

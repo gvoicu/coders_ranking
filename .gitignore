@@ -13,5 +13,5 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-
-/db/schema.rb
+Gemfile.lock
+db/schema.rb

@@ -3,7 +3,9 @@ CodersRanking::Application.routes.draw do
 
   get "pages/index"
 
-  get "pages/index2"
+  # get "posts/index"
+
+  resources :posts
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

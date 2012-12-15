@@ -2,8 +2,15 @@ CodersRanking::Application.routes.draw do
   devise_for :users
 
   get "pages/index"
+	
+	match '/auth/:provider/callback' => 'users#github'
 
-  get "pages/index2"
+<<<<<<< HEAD
+  # get "posts/index"
+
+  resources :posts
+=======
+>>>>>>> origin/master
 
   get "/pages/sign_in"
 

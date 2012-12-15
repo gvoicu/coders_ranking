@@ -5,7 +5,6 @@ class PagesController < ApplicationController
   end
 
   def index2
-    
   end
 
   def sign_in

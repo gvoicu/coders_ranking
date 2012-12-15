@@ -7,4 +7,10 @@ class PagesController < ApplicationController
   def index2
     
   end
+
+  def sign_in
+  end
+
+  def new_action
+  end
 end

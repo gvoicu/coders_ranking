@@ -7,6 +7,8 @@ CodersRanking::Application.routes.draw do
 	match '/github' => 'users#github'
 
 
+  resources :posts
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

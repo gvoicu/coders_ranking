@@ -1,0 +1,20 @@
+<%= form_tag ({:action => "create"}), ({:method => :post}) do %>
+    Title<br>
+    <%= text_field_tag "post[title]" %>
+    <br />
+
+    Message<br>
+    <%= text_field_tag "post[text]" %>
+
+    <%= submit_tag "Post" %>
+<% end %>
+
+<ul>
+    <% @posts.each do |post| %>
+        <li>
+        <p><%= post.user_id %></p>
+        <p><%= post.title %></p>
+        <p><%= post.text %></p>
+        </li>
+    <% end %>
+</ul>

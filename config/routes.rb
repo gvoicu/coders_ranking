@@ -1,4 +1,6 @@
 CodersRanking::Application.routes.draw do
+  devise_for :users
+
   get "pages/index"
 
   get "pages/index2"

@@ -2,10 +2,15 @@ CodersRanking::Application.routes.draw do
   devise_for :users
 
   get "pages/index"
+	
+	match '/auth/:provider/callback' => 'users#github'
 
+<<<<<<< HEAD
   # get "posts/index"
 
   resources :posts
+=======
+>>>>>>> origin/master
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

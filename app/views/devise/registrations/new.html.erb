@@ -1,0 +1,53 @@
+<div class="row">
+  <legend><strong>New Account</strong></legend>
+  <label id="firstname-label" class="firstname">
+  <strong>First name</strong>
+  <input type="text" value="" name="FirstName" id="FirstName" value="" spellcheck="false">
+  </label>
+  <label id="lastname-label" class="lastname">
+  <strong>Last name</strong>
+  <input type="text" value="" name="LastName" id="LastName" value="" spellcheck="false">
+  </label>
+  </fieldset>
+</div>
+
+<div class="row">
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <div><strong><%= f.label :email %></strong>
+  <%= f.email_field :email %></div>
+</div>
+
+<div class="row" id="password">
+  <div><strong><%= f.label :password %></strong>
+  <%= f.password_field :password %></div> 	
+</div>
+
+<div class="row" id="confirm-password">
+  <label id="confirm-password-label">
+  <strong>Confirm password</strong>
+  <input type="password" name="Passwd" id="Passwd" >
+  </label>
+</div>
+
+<div class="row" id="birthday">
+  <legend><strong id="BirthdayLabel">Birthday [Optional]</strong></legend>
+
+  <label id="day-label" class="day">
+  <strong>Day</strong>
+  <input type="text" maxlength="2" value="" name="BirthDay" id="BirthDay" value="">
+  </label>
+
+  <label id="month-label" class="month">
+    <strong>Month</strong>
+    <input type="text" maxlength="2" value="" name="BirthMonth" id="BirthMonth" value="">
+  </label>
+
+  <label id="year-label" class="year">
+  <strong>Year</strong>
+  <input type="text" maxlength="4" value="" name="BirthYear" id="BirthYear" value="">
+  </label>
+  
+  <div class="row"><%= f.submit "Sign up" %></div>
+<% end %>	
+</div>
+

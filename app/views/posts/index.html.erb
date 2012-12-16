@@ -1,11 +1,11 @@
 
-<%=  link_to "Sign out", "/users/sign_out" %>
+<%=  link_to "Sign out", "/users/sign_in" %>
 
 <div style="float: left; width: 30%;">
   <h3> POSTS </h3>
-  <h6><%= current_user.email     %>  </h6>
+  <h6><%= @User.email     %>  </h6>
   <div style="float: left; width: 30%;">
-  <img src="/assets/HTML5.jpg" style="width: 100px; height: 100px;"/>
+  <img src="<%=@Img%>" style="width: 100px; height: 100px;"/>
   </div>
 
   <div style="float: left; width: 70%">

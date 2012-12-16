@@ -7,11 +7,11 @@ class PostsController < ApplicationController
     def index
         omniauth = request.env["omniauth.auth"]
         obj = ActiveSupport::JSON.decode(omniauth.inspect.to_json)
-        raise obj
         #@posts = Post.all
         user = User.find_by_id(params[:user_id]) || current_user
         @posts = Post.where(:user_id => user.id)
-        @User = current_user.id
+        @User = user
+        @Img ="/assets/hmtl.jpg"
 
     end
 

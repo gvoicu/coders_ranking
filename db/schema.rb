@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(:version => 20121216120519) do
     t.integer  "uid"
   end
 
+  create_table "stack_overflow_data", :force => true do |t|
+    t.string   "user_name"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false

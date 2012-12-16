@@ -1,4 +1,10 @@
-<%= form_tag ({:action => "create"}), ({:method => :post}) do %>
+<div >
+  <h3> POSTS </h3>
+  <h3><% @User %>  </h3>
+</div>
+
+<div>
+  <%= form_tag ({:action => "create"}), ({:method => :post}) do %>
     Title<br>
     <%= text_field_tag "post[title]" %>
     <br />
@@ -7,9 +13,9 @@
     <%= text_field_tag "post[text]" %>
 
     <%= submit_tag "Post" %>
-<% end %>
+  <% end %>
 
-<ul>
+  <ul>
     <% @posts.each do |post| %>
         <p><%= post.user.username %></p>
         <p><%= post.title %></p>
@@ -25,4 +31,5 @@
             <%= submit_tag "Comment" %>
         <% end %>
     <% end %>
-</ul>
+  </ul>
+</div>

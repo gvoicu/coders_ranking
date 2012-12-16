@@ -13,6 +13,7 @@ class PostsController < ApplicationController
     def create
         params[:post][:user_id] = current_user.id
         Post.create(params[:post])
+        @User = current_user.id
         redirect_to "/posts"
     end
 end

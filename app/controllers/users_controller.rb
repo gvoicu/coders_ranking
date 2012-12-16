@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
+<<<<<<< HEAD
 	require 'net/http'
+=======
+
+>>>>>>> edbe97c510392dde6ff3c9e9ec1dbdebbf125811
 	def github
 		omniauth=request.env["omniauth.auth"]
 		id=omniauth.uid
@@ -37,5 +41,11 @@ class UsersController < ApplicationController
 		info_star=data_star.body
 		info_star=JSON.parse(info_star)
 		return info_star.size
+	end
+
+	def stackexchange
+		omniauth=request.env["omniauth.auth"]
+		
+		raise omniauth.to_s
 	end
 end

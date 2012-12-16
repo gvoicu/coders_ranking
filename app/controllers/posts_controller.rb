@@ -6,12 +6,16 @@ class PostsController < ApplicationController
 
     def index
         omniauth = request.env["omniauth.auth"]
-        obj = ActiveSupport::JSON.decode(omniauth.inspect.to_json)
-        raise obj
-        #@posts = Post.all
+        if omniauth.present?
+            skills = omniauth.extra["raw_info"].skills.values[1].map do |skill|
+                skill.skill.name
+            end
+
+            current_user.update_attributes(:skills => skills.join(","))
+        end
+
         @posts = Post.where(:user_id => current_user.id)
         @User = current_user.id
-
     end
 
     def create

@@ -4,7 +4,7 @@ CodersRanking::Application.routes.draw do
   get "pages/index"
 	
 	match '/auth/:provider/callback' => 'users#github'
-	match '/github' => 'users#github'
+#	match '/:provider' => 'users#github'
 
 
   resources :posts

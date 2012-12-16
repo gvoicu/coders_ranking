@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
-	require 'net/http'
+
+	before_filter :authenticate_user!
+
+	#require 'net/http'
 	def github
+
+	  # current_user => User-ul curent
+
+
 		omniauth=request.env["omniauth.auth"]
 		id=omniauth.uid
 		nickname=omniauth.info.nickname
@@ -13,7 +20,7 @@ class UsersController < ApplicationController
 		info=JSON.parse(info)
 		followers_url=info[0]["owner"]["followers_url"]
 		followers_nr=Integer(get_no(followers_url))
-		new_git={:github_username => nickname, :user_id => id , :follow_nr => followers_nr}
+		new_git={:github_username => nickname, :user_id => current_user.id , :follow_nr => followers_nr, :uid => id}
 		GithubData.create(new_git)
 
 		for i in 0..(info.size-1)
@@ -25,6 +32,7 @@ class UsersController < ApplicationController
 			new_repo={:uid => id, :repos =>repo_name , :stars => forks+star_nr, :tag => language}
 			Repo.create(new_repo)
 		end
+		current_user.compute_github_mark
 	end
 
 	private 

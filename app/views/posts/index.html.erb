@@ -1,5 +1,5 @@
 
-
+<%=  link_to "Sign out", "/users/sign_out" %>
 
 <div style="float: left; width: 30%;">
   <h3> POSTS </h3>
@@ -11,13 +11,13 @@
   <div style="float: left; width: 70%">
   <%= form_tag ({:action => "create"}), ({:method => :post}) do %>
       Title<br />
-      <%= text_field_tag "post[title]" %>
+      <%= text_field_tag "post[title]", "", :style => "height:30px" %>
       <br />
 
       Message<br>
-      <%= text_field_tag "post[text]" %>
+      <%= text_field_tag "post[text]", "", :style => "height:30px" %>
 
-      <%= submit_tag :post %>
+      <%= submit_tag :Post %>
         <!--
       <input type="submit" value="P" class="btn" />
       -->
@@ -28,20 +28,21 @@
 <div style="float: right; width: 70%;">
   <ul>
     <% @posts.each do |post| %>
-        <ul data-role="listview">
+        <ul data-role="listview" style="resize: both;">
         <li data-role="list-divider" role="heading">Post</li>
-        <li><%= post.title %></li>
-        <li><%= post.text %></li>
+        <li>Title:      <%= post.title %></li>
+        <li>Message:    <%= post.text %></li>
         <li data-role="list-divider" role="heading">Comments</li>
         <% post.comments.each do |comment| %>
          <li>   <%= comment.user.email %>  said:
             <%= comment.text %></li>
         <% end %>
-
-        <%= form_tag  ({:controller => "comments", :action => "create"}), ({:method => :post}) do %>
-            <%= text_field_tag "comment[text]" %>
+        <li data-role="list-divider" role="heading">Your Comment</li>
+        <li><%= form_tag  ({:controller => "comments", :action => "create"}), ({:method => :post, :remote => false}) do %>
+            <%= text_field_tag "comment[text]", "", :style => "height:30px" %>
             <%= hidden_field_tag "comment[post_id]", post.id %>
-            <%= submit_tag "Comment" %>
+
+        </li>
         <% end %>
     <% end %>
     </ul>

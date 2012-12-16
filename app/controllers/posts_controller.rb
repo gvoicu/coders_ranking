@@ -15,10 +15,8 @@ class PostsController < ApplicationController
         end
 
         @posts = Post.where(:user_id => current_user.id)
-        @User = current_user.id
         user = User.find_by_id(params[:user_id]) || current_user
-        @user = user
-        @Img ="/assets/hmtl.jpg"
+        @User = user
     end
 
     def create

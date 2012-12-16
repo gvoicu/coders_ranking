@@ -6,6 +6,18 @@ class PostsController < ApplicationController
 
     def index
         omniauth = request.env["omniauth.auth"]
+        if omniauth.present?
+						begin
+							skills = omniauth.extra["raw_info"].skills.values[1].map do |skill|
+									skill.skill.name
+							end
+
+							current_user.update_attributes(:skills => skills.join(","))
+						rescue => e
+							puts "Don't have any skills"
+						end
+        end
+
         obj = ActiveSupport::JSON.decode(omniauth.inspect.to_json)
 
         user = User.find_by_id(params[:user_id]) || current_user

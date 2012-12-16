@@ -17,6 +17,7 @@ CodersRanking::Application.routes.draw do
   # match '/auth/:github/callback' => 'users#github'
   #match '/auth/stackexchange/callback' => 'users#stackoverflow'
 	match '/auth/github/callback' => 'users#github'
+	match '/auth/linkedin/callback' => 'posts#index'
 	match '/github' => 'users#github'
   match '/auth/stackexchange/callback' => 'posts#index'
 

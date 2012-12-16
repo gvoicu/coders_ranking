@@ -1,35 +1,49 @@
-<div >
+
+
+
+<div style="float: left; width: 30%;">
   <h3> POSTS </h3>
-  <h3><% @User %>  </h3>
+  <h6><%= current_user.email     %>  </h6>
+  <div style="float: left; width: 30%;">
+  <img src="/assets/HTML5.jpg" style="width: 100px; height: 100px;"/>
+  </div>
+
+  <div style="float: left; width: 70%">
+  <%= form_tag ({:action => "create"}), ({:method => :post}) do %>
+      Title<br />
+      <%= text_field_tag "post[title]" %>
+      <br />
+
+      Message<br>
+      <%= text_field_tag "post[text]" %>
+
+      <%= submit_tag :post %>
+        <!--
+      <input type="submit" value="P" class="btn" />
+      -->
+  <% end %>
+  </div>
 </div>
 
-<div>
-  <%= form_tag ({:action => "create"}), ({:method => :post}) do %>
-    Title<br>
-    <%= text_field_tag "post[title]" %>
-    <br />
-
-    Message<br>
-    <%= text_field_tag "post[text]" %>
-
-    <%= submit_tag "Post" %>
-  <% end %>
-
+<div style="float: right; width: 70%;">
   <ul>
     <% @posts.each do |post| %>
-        <p><%= post.user.username %></p>
-        <p><%= post.title %></p>
-        <p><%= post.text %></p>
-
+        <ul data-role="listview">
+        <li data-role="list-divider" role="heading">Post</li>
+        <li><%= post.title %></li>
+        <li><%= post.text %></li>
+        <li data-role="list-divider" role="heading">Comments</li>
         <% post.comments.each do |comment| %>
-            <%= comment.text %>
+         <li>   <%= comment.user.email %>  said:
+            <%= comment.text %></li>
         <% end %>
 
-        <%= form_tag ({:controller => "comments", :action => "create"}), ({:method => :post}) do %>
+        <%= form_tag  ({:controller => "comments", :action => "create"}), ({:method => :post}) do %>
             <%= text_field_tag "comment[text]" %>
             <%= hidden_field_tag "comment[post_id]", post.id %>
             <%= submit_tag "Comment" %>
         <% end %>
     <% end %>
+    </ul>
   </ul>
 </div>

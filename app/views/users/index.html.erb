@@ -1,0 +1,6 @@
+<H1> Users </H1>
+  <ul data-role="listview">
+    <% @Users.each  do  |user|%>
+        <li><a href="posts?user_id=<%= user.id %>"><%= user.email %></a></li>
+        <% end %>
+  </ul>

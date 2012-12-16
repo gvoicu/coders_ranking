@@ -6,7 +6,8 @@ class PostsController < ApplicationController
 
     def index
         #@posts = Post.all
-        @posts = Post.where(:user_id => current_user.id)
+        user = User.find_by_id(params[:user_id]) || current_user
+        @posts = Post.where(:user_id => user.id)
         @User = current_user.id
 
     end

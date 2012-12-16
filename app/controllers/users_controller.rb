@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	require 'net/http'
+
 	def github
 		omniauth=request.env["omniauth.auth"]
 		id=omniauth.uid
@@ -25,7 +25,11 @@ class UsersController < ApplicationController
 			new_repo={:uid => id, :repos =>repo_name , :stars => forks+star_nr, :tag => language}
 			Repo.create(new_repo)
 		end
-	end
+  end
+
+  def index
+    @Users = User.all;
+  end
 
 	private 
 	def get_no(url)

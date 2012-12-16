@@ -5,6 +5,7 @@ gem 'omniauth-github'
 gem 'omniauth-openid'
 gem 'github_api'
 gem 'omniauth-stackexchange'
+gem 'omniauth-linkedin'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

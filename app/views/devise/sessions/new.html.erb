@@ -55,9 +55,9 @@
         <p> Or, you can sign in with your Coders Ranking account</p>
 	     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   		<div><strong><%= f.label :email %></strong>
-  		<%= f.email_field :email %></div>	
+  		<%= f.email_field :email %></div>
 	     <div><strong><%= f.label :Passwd %></strong>
-  	     <%= f.password_field :password %></div>	
+  	     <%= f.password_field :password %></div>
              
              <div><%= f.submit "Sign in"  %></div>
              <%end%>

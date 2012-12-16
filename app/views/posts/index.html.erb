@@ -1,14 +1,33 @@
-
-<%=  link_to "Sign out", "/users/sign_out" %>
+<%= link_to "Users", "/users", :rel => "external" %> |
+<%= link_to "Sign out", "/users/sign_out", :rel => "external" %>
 
 <div style="float: left; width: 30%;">
   <h3> POSTS </h3>
-  <h6><%= current_user.email     %>  </h6>
+  <h6><%= @user.email     %>  </h6>
   <div style="float: left; width: 30%;">
   <img src="/assets/HTML5.jpg" style="width: 100px; height: 100px;"/>
+	<a href="/auth/github" rel="external" >GitHub Login</a>
   </div>
 
   <div style="float: left; width: 70%">
+
+
+	<h3>About Me</h3>
+	I rock in:
+	<% if @most_prolific_language == "N" %>
+		ERROR 404 :-(
+	<% else %>
+		<%= @most_prolific_language %>
+  <% end %>
+  
+
+	<h3>My Awesome Badges</h3>
+  <% if @repo_badge == true %>
+		<p>Lots of repos</p>
+	<% end %>
+
+	<h3>New Post</h3>
+
   <%= form_tag ({:action => "create"}), ({:method => :post}) do %>
       Title<br />
       <%= text_field_tag "post[title]", "", :style => "height:30px" %>

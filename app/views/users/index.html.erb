@@ -1,0 +1,13 @@
+<H1> Users </H1>
+  <ul data-role="listview">
+    <% @Users.each  do  |user|%>
+        <li>
+					<a href="posts?user_id=<%= user.id %>">
+						<h3>
+						<%= user.email %>
+						</h3>
+						<p>Points: <%= user.compute_github_mark %></p>
+					</a>
+				</li>
+        <% end %>
+  </ul>

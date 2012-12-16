@@ -5,10 +5,11 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
 
-  <%# raise params[:controller] %>
 
-  <% if (params[:controller] != "devise/session" && params[:action] != "new") &&
-        (params[:controller] != "devise/registration" && params[:action != "new" ])%>
+  <% if (!(params[:controller] == "devise/sessions" && params[:action] == "new") &&
+        !(params[:controller] == "devise/registrations" && params[:action] == "new") &&
+				!(params[:controller] == "pages" && params[:action] == "index")
+				) %>
       <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
   <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>

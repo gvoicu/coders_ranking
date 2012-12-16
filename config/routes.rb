@@ -1,20 +1,24 @@
 CodersRanking::Application.routes.draw do
   devise_for :users
 
+  resources :users
+  get "users/index"
   get "pages/index"
 
-#		match '/auth/:stackexchange/callback' => 'users#stackoverflow'
+	# match '/auth/:github/callback' => 'users#github'
+	# match '/auth/:stackexchange/callback' => 'users#stackoverflow'
 
   resources :posts
   resources :comments
 
   get "/pages/sign_in"
-
   get "/pages/new_action"
- # match '/auth/:github/callback' => 'users#github'
+
+  # match '/auth/:github/callback' => 'users#github'
   #match '/auth/stackexchange/callback' => 'users#stackoverflow'
 	match '/auth/github/callback' => 'users#github'
 	match '/github' => 'users#github'
+  match '/auth/stackexchange/callback' => 'posts#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

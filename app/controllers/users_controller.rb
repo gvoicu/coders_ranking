@@ -2,13 +2,20 @@ class UsersController < ApplicationController
 
 	before_filter :authenticate_user!
 
-	require 'net/http'
 	def github
-
+		require 'net/http'
 	  # current_user => User-ul curent
 
 		omniauth=request.env["omniauth.auth"]
 		id=omniauth.uid
+
+	  gd = GithubData.find_by_uid(omniauth.uid)
+		if gd.present?
+			sign_in gd.user
+			redirect_to "/users"
+			return
+		end
+
 		nickname=omniauth.info.nickname
 		puts nickname
 
@@ -36,9 +43,16 @@ class UsersController < ApplicationController
 			Repo.create(new_repo) rescue nil
 		end
 		current_user.compute_github_mark
+	
+		redirect_to "/users"
 	end
 
+  def index
+    @Users = User.all.sort_by{ |user| -user.compute_github_mark }
+  end
+
 	private 
+
 	def get_no(url)
 		uri=URI.parse(url)
 		http=Net::HTTP.new(uri.host,uri.port)

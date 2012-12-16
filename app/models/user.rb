@@ -13,13 +13,23 @@ class User < ActiveRecord::Base
     has_many :comments
 
 		def compute_github_mark
-			 follow_nr = self.github_data.follow_nr
+			 return  5*Integer(follow_nr) +Integer(repos_count)
+		end
 
-				key=github_data.find_by_uid(self.id).user_id
-				star_nr=repo.where(:uid => key).count
-		#	tag=
-				rank=5*Integer(follow_nr) +Integer(star_nr)
-				tag=repo.where(:uid => key).pluck(:tag)	
-				puts rank
+   def calc_tag
+	   repo=Repo.where(:uid => self.github_data.uid).map { |repo| repo.tag } 
+		 return repo
+	 end
+
+		def repos_count
+	    Repo.where(:uid => self.github_data.uid).count 
+		end
+
+		def star_count
+	    Repo.where(:uid => self.github_data.uid).inject(0){ |sum, repo| repo.stars } 
+		end
+
+		def follow_nr
+			self.github_data.follow_nr
 		end
 end

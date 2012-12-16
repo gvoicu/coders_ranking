@@ -3,9 +3,7 @@ CodersRanking::Application.routes.draw do
 
   get "pages/index"
 
-	match '/auth/:github/callback' => 'users#github'
-	match '/github' => 'users#github'
-	match '/auth/:stackexchange/callback' => 'users#stackoverflow'
+#		match '/auth/:stackexchange/callback' => 'users#stackoverflow'
 
   resources :posts
   resources :comments
@@ -14,7 +12,9 @@ CodersRanking::Application.routes.draw do
 
   get "/pages/new_action"
  # match '/auth/:github/callback' => 'users#github'
-  match '/auth/:stackexchange/callback' => 'users#stackoverflow'
+  #match '/auth/stackexchange/callback' => 'users#stackoverflow'
+	match '/auth/github/callback' => 'users#github'
+	match '/github' => 'users#github'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

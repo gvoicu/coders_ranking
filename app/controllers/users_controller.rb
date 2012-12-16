@@ -2,21 +2,24 @@ class UsersController < ApplicationController
 
 	before_filter :authenticate_user!
 
-	#require 'net/http'
+	require 'net/http'
 	def github
 
 	  # current_user => User-ul curent
 
-
 		omniauth=request.env["omniauth.auth"]
 		id=omniauth.uid
 		nickname=omniauth.info.nickname
+		puts nickname
+
 	  uri=URI.parse('https://api.github.com/users/' + nickname +'/repos')
 		http=Net::HTTP.new(uri.host,uri.port)
 		http.use_ssl=true
+
 		http.verify_mode=OpenSSL::SSL::VERIFY_NONE
 		data=http.get(uri.request_uri)
 		info=data.body
+
 		info=JSON.parse(info)
 		followers_url=info[0]["owner"]["followers_url"]
 		followers_nr=Integer(get_no(followers_url))
@@ -30,7 +33,7 @@ class UsersController < ApplicationController
 			star_url=info[i]["stargazers_url"].to_s
 			star_nr=Integer(get_no(star_url))	
 			new_repo={:uid => id, :repos =>repo_name , :stars => forks+star_nr, :tag => language}
-			Repo.create(new_repo)
+			Repo.create(new_repo) rescue nil
 		end
 		current_user.compute_github_mark
 	end

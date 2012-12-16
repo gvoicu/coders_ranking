@@ -1,6 +1,8 @@
 CodersRanking::Application.routes.draw do
   devise_for :users
 
+  resources :users
+  get "users/index"
   get "pages/index"
 
     match '/auth/:provider/callback' => 'posts#index'

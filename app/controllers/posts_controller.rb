@@ -5,6 +5,9 @@ class PostsController < ApplicationController
     before_filter :authenticate_user!
 
     def index
+        omniauth = request.env["omniauth.auth"]
+        obj = ActiveSupport::JSON.decode(omniauth.inspect.to_json)
+        raise obj
         #@posts = Post.all
         user = User.find_by_id(params[:user_id]) || current_user
         @posts = Post.where(:user_id => user.id)

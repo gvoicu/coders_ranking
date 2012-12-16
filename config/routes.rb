@@ -5,9 +5,10 @@ CodersRanking::Application.routes.draw do
   get "users/index"
   get "pages/index"
 
-	match '/auth/:github/callback' => 'users#github'
+    match '/auth/:provider/callback' => 'posts#index'
+	# match '/auth/:github/callback' => 'users#github'
 	match '/github' => 'users#github'
-	match '/auth/:stackexchange/callback' => 'users#stackoverflow'
+	# match '/auth/:stackexchange/callback' => 'users#stackoverflow'
 
   resources :posts
   resources :comments

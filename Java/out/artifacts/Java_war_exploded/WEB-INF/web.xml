@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+           version="2.5">
+
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>Simple.Login</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Ban</servlet-name>
+        <servlet-class>Simple.Ban</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Ban</servlet-name>
+        <url-pattern>/Ban</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BanComment</servlet-name>
+        <servlet-class>Simple.BanComment</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BanComment</servlet-name>
+        <url-pattern>/BanComment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Image</servlet-name>
+        <servlet-class>Simple.Image</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Image</servlet-name>
+        <url-pattern>/Image</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Language</servlet-name>
+        <servlet-class>Simple.Language</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Language</servlet-name>
+        <url-pattern>/Language</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Book</servlet-name>
+        <servlet-class>Simple.Book</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Book</servlet-name>
+        <url-pattern>/Book</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Game</servlet-name>
+        <servlet-class>Simple.Game</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Game</servlet-name>
+        <url-pattern>/Game</url-pattern>
+    </servlet-mapping>
+</web-app>
